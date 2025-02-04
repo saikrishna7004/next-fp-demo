@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getComments, saveComment } from "@/lib/comments";
 
 export default function Comments({ postId }) {
     const [comments, setComments] = useState([]);
@@ -9,23 +10,26 @@ export default function Comments({ postId }) {
     const [editingText, setEditingText] = useState("");
 
     useEffect(() => {
-        const storedComments = JSON.parse(localStorage.getItem(`comments-${postId}`)) || [];
-        setComments(storedComments);
+        async function fetchComments() {
+            const fetchedComments = await getComments(postId);
+            setComments(fetchedComments);
+        }
+        fetchComments();
     }, [postId]);
 
-    const handleCommentSubmit = (e) => {
+    const handleCommentSubmit = async (e) => {
         e.preventDefault();
         if (editingIndex !== null) {
             const updatedComments = comments.map((comment, index) =>
                 index === editingIndex ? { ...comment, text: editingText } : comment
             );
+            await saveComment(postId, updatedComments);
             setComments(updatedComments);
-            localStorage.setItem(`comments-${postId}`, JSON.stringify(updatedComments));
             setEditingIndex(null);
             setEditingText("");
         } else {
             const updatedComments = [...comments, { name: "Anonymous", text: newComment }];
-            localStorage.setItem(`comments-${postId}`, JSON.stringify(updatedComments));
+            await saveComment(postId, updatedComments);
             setComments(updatedComments);
             setNewComment("");
         }
@@ -36,10 +40,10 @@ export default function Comments({ postId }) {
         setEditingText(comments[index].text);
     };
 
-    const handleDelete = (index) => {
+    const handleDelete = async (index) => {
         const updatedComments = comments.filter((_, i) => i !== index);
+        await saveComment(postId, updatedComments);
         setComments(updatedComments);
-        localStorage.setItem(`comments-${postId}`, JSON.stringify(updatedComments));
     };
 
     return (

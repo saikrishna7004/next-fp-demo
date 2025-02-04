@@ -4,7 +4,8 @@ import Comments from "@/app/components/Comments";
 import PostClient from "@/app/components/PostClient";
 
 export default async function Post({ params }) {
-    const post = await getPost(params.id);
+    const { id } = await params
+    const post = await getPost(id);
 
     if (!post) return <p>Post not found</p>;
 
@@ -22,8 +23,8 @@ export default async function Post({ params }) {
                         <span key={tag} className="tag mr-2">{tag}</span>
                     ))}
                 </div>
-                <PostClient postId={params.id} />
-                <Comments postId={params.id} comments={[]} />
+                <PostClient postId={id} />
+                <Comments postId={id} comments={[]} />
             </article>
         </div>
     );

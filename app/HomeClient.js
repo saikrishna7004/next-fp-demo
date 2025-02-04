@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 export default function HomeClient({ posts }) {
@@ -46,7 +47,7 @@ export default function HomeClient({ posts }) {
                                 <span key={tag} className="tag mr-2">{tag}</span>
                             ))}
                         </div>
-                        <a href={`/posts/${post.id}`} className="mt-4 inline-block text-blue-500">Read more</a>
+                        <Link href={`/posts/${post.id}`} className="mt-4 inline-block text-blue-500">Read more</Link>
                     </article>
                 ))}
             </main>

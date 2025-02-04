@@ -26,6 +26,7 @@ export default function Navbar() {
           <Link href="/" className="mr-4">Home</Link>
           <Link href="/about" className="mr-4">About</Link>
           <Link href="/contact">Contact</Link>
+          <Link href="/posts/create">New Post</Link>
         </nav>
         <button onClick={toggleDarkMode} className="ml-4 p-2 bg-gray-700 rounded">
           {darkMode ? "Light Mode" : "Dark Mode"}

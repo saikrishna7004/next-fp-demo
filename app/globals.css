@@ -61,9 +61,27 @@ textarea, input, select {
 }
 
 .head {
-  color: black
+  color: black;
 }
 
 .dark .head {
   color: white !important;
+}
+
+.title {
+  color: var(--foreground);
+}
+
+.dark .title {
+  color: var(--foreground);
+}
+
+.input {
+  @apply p-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500;
+}
+
+.dark .input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--foreground);
 }
