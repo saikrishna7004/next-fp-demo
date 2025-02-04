@@ -5,17 +5,65 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --input-bg: #f9f9f9;
+  --input-border: #ccc;
+  --tag-bg: #e0e0e0;
+  --tag-text: #171717;
+  --comment-bg: #f0f0f0;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  @apply antialiased;
+}
+
+header, footer {
+  @apply bg-gray-800 text-white p-4;
+}
+
+header nav a {
+  @apply mr-4 text-white hover:text-gray-400;
+}
+
+footer p {
+  @apply text-center;
+}
+
+textarea, input, select {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  @apply p-2 border rounded;
+}
+
+.tag {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  @apply p-1 rounded;
+}
+
+.comment {
+  background-color: var(--comment-bg);
+  @apply p-4 border rounded;
+}
+
+.dark body {
+  --background: #171717;
+  --foreground: #ffffff;
+  --input-bg: #333333;
+  --input-border: #555555;
+  --tag-bg: #444444;
+  --tag-text: #ffffff;
+  --comment-bg: #333333;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.head {
+  color: black
+}
+
+.dark .head {
+  color: white !important;
 }

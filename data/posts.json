@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Introduction to Next.js",
+        "author": "John Doe",
+        "date": "2023-10-01",
+        "content": "Next.js is a React framework that enables functionality such as server-side rendering and static site generation.",
+        "tags": [
+            "Next.js",
+            "React",
+            "SSR"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Building a Blog with Next.js",
+        "author": "Jane Smith",
+        "date": "2023-10-05",
+        "content": "In this tutorial, we'll build a simple blog platform using Next.js.",
+        "tags": [
+            "Next.js",
+            "Blog",
+            "Tutorial"
+        ]
+    }
+]
